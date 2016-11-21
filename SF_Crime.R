@@ -55,7 +55,7 @@ AllCrime_type = sf_map + geom_point(data=df_2016, aes(x=X,y=Y),size=.2,alpha=.75
   theme(strip.text.x = element_text(size = 8, face='bold',family="Trebuchet MS"))
 ggsave('All_Crime_2016_type.png',AllCrime_type,dpi=500)
 
-## how crime rate really gone down?
+## has crime rate really gone down?
 df = merge(df,total_pop,by='Year')
 unique_years = unique(df$Year)
 for (i in 1:length(unique_years)){
@@ -93,7 +93,7 @@ violent_crime_bar=ggplot(crime_rate, aes(x=Year,y=V1))+
   coord_flip()+
   ylab('Incidents per 100,000 People')+xlab('')+theme_light()
 
-## time of days 
+## time of days for all crime
 
 library(lubridate)
 df$timeframe = ifelse(hour(df$datetime)>8 & hour(df$datetime)<20,'Day','Night')
